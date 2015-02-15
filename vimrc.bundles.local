@@ -1,0 +1,7 @@
+Bundle 'tpope/vim-dispatch'
+Bundle 'elixir-lang/vim-elixir'
+Bundle 'flazz/vim-colorschemes'
+Bundle 'christoomey/vim-tmux-navigator'
+Bundle 'godlygeek/tabular'
+Bundle 'rking/ag.vim'
+Bundle 'terryma/vim-multiple-cursors'

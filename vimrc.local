@@ -1,0 +1,147 @@
+colorscheme grb256
+set guifont=Source\ Code\ Pro\ for\ Powerline:h16
+
+set hlsearch             " do incremental searching
+set autoindent           " always set autoindenting on
+set cursorline                 " highlight current line
+set cuc cul                    " highlight active column
+let g:netrw_liststyle=3        " Explorer style
+set encoding=utf-8
+set scrolloff=6
+
+let g:syntastic_check_on_open=0
+"
+" Edit another file in the same directory as the current file
+" uses expression to extract path from current file's path
+map <Leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
+map <Leader>s :split <C-R>=expand("%:p:h") . '/'<CR>
+map <Leader>v :vnew <C-R>=expand("%:p:h") . '/'<CR>
+
+map <Leader>n :nohl<cr>
+
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+cmap w!! w !sudo tee > /dev/null %
+
+nmap <Leader>a<Space> :Tabularize /^[^<space>]*\zs/<CR>
+vmap <Leader>a<Space> :Tabularize /^[^<space>]*\zs/<CR>
+nmap <Leader>a# :Tabularize /#<CR>
+vmap <Leader>a# :Tabularize /#<CR>
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a=> :Tabularize /=><CR>
+vmap <Leader>a=> :Tabularize /=><CR>
+nmap <Leader>a-> :Tabularize /-><CR>
+vmap <Leader>a-> :Tabularize /-><CR>
+nmap <Leader>a: :Tabularize /:\zs/l0l1<CR>
+vmap <Leader>a: :Tabularize /:\zs/l0l1<CR>
+nmap <Leader>a, :Tabularize /,\zs/l0l1<CR>
+vmap <Leader>a, :Tabularize /,\zs/l0l1<CR>
+filetype plugin indent on
+
+" Tagbar
+nmap <Leader>tb :TagbarToggle<CR>
+let g:tagbar_type_coffee = {
+    \ 'ctagstype' : 'coffee',
+    \ 'kinds'     : [
+        \ 'c:classes',
+        \ 'm:methods',
+        \ 'f:functions',
+        \ 'v:variables',
+        \ 'f:fields',
+    \ ]
+    \ }
+
+" clipboard goodies
+map <Leader>p :set paste<CR>o<esc>:r !pbpaste<CR>:set nopaste<cr>
+nmap <F2> :.w !pbcopy<CR><CR>
+vmap <F2> :w !pbcopy<CR><CR>
+set clipboard=unnamed " default yank and paste to the osx clipboard
+
+" Remove trailing whitespace on save for ruby files.
+au BufWritePre *.rb :%s/\s\+$//e
+au BufWritePre *.coffee :%s/\s\+$//e
+
+" bind K to grep word under cursor
+nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+" bind \ (backward slash) to grep shortcut
+" command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+nnoremap \ :Ag<SPACE>
+
+" hint to keep lines short
+if exists('+colorcolumn')
+  set colorcolumn=100
+endif
+
+" Numbers
+set relativenumber
+set numberwidth=5
+
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set number
+  else
+    set relativenumber
+  endif
+endfunc
+" Numbers
+set relativenumber
+set numberwidth=5
+
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set number
+  else
+    set relativenumber
+  endif
+endfunc
+"
+" Numbers
+set relativenumber
+set numberwidth=5
+
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set number
+  else
+    set relativenumber
+  endif
+endfunc
+"
+" Numbers
+set relativenumber
+set numberwidth=5
+
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set number
+  else
+    set relativenumber
+  endif
+endfunc
+
+map <Leader>ct :!ctags -R .<CR>
+
+set wildignore+=*/tmp/*,*/target/*,*.so,*.swp,*.zip,*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*
+
+" Tab completion
+" will insert tab at beginning of line,
+" will use completion if not at beginning
+set wildmode=list:longest,list:full
+set complete=.,w,t
+
+let g:rspec_runner = "os_x_iterm"
+let g:rspec_command = "Dispatch bundle exec rspec --format progress {spec}"
+map <Leader>a :call RunAllSpecs()<CR>
+
+" Treat <li> and <p> tags like the block tags they are
+let g:html_indent_tags = 'li\|p'
+
+" Fuzzy finder: ignore stuff that can't be opened, and generated files
+let g:fuzzy_ignore = "*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;vendor/**;coverage/**;tmp/**;rdoc/**"
+
+" status line setup with git info
+set stl=%f\ %m\ %r%{fugitive#statusline()}\ Line:%l/%L[%p%%]\ Col:%v\ Buf:#%n\ [%b][0x%B]
+
+" Format xml files
+au FileType xml exe ":silent 1,$!xmllint --format --recover - 2>/dev/null"
+
