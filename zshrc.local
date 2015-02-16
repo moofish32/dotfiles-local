@@ -1,11 +1,14 @@
+typeset -U path
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.7.0_72.jdk/Contents/Home"
 export M2_HOME="/usr/local/Cellar/maven/3.2.3/libexec"
 export JETTY_HOME="/Users/michaelcowgill/servers/jetty"
 export JRUBY_OPTS="-J-XX:+TieredCompilation -J-XX:TieredStopAtLevel=1"
 
-export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
-export PATH="$PATH:/usr/local/lib/node_modules"
+export -U PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+export -U PATH="$PATH:/usr/local/lib/node_modules"
+export -U PATH=/usr/local/bin:/usr/local/sbin:$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/Postgres93.app/Contents/MacOS/bin
 source $(brew --prefix nvm)/nvm.sh
+export -U PATH="$HOME/.rbenv/bin:$PATH"
 # use vim as the visual editor
 export VISUAL=vim
 export EDITOR=$VISUAL
@@ -37,3 +40,5 @@ done
 for script in ~/.zsh/lib/*.zsh; do
   source $script
 done
+
+if which rbenv > /dev/null; then eval "$(rbenv init - zsh --no-rehash)"; fi
