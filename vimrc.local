@@ -76,49 +76,6 @@ endif
 set relativenumber
 set numberwidth=5
 
-function! NumberToggle()
-  if(&relativenumber == 1)
-    set number
-  else
-    set relativenumber
-  endif
-endfunc
-" Numbers
-set relativenumber
-set numberwidth=5
-
-function! NumberToggle()
-  if(&relativenumber == 1)
-    set number
-  else
-    set relativenumber
-  endif
-endfunc
-"
-" Numbers
-set relativenumber
-set numberwidth=5
-
-function! NumberToggle()
-  if(&relativenumber == 1)
-    set number
-  else
-    set relativenumber
-  endif
-endfunc
-"
-" Numbers
-set relativenumber
-set numberwidth=5
-
-function! NumberToggle()
-  if(&relativenumber == 1)
-    set number
-  else
-    set relativenumber
-  endif
-endfunc
-
 map <Leader>ct :!ctags -R .<CR>
 
 set wildignore+=*/tmp/*,*/target/*,*.so,*.swp,*.zip,*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*
