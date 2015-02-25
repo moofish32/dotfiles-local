@@ -17,6 +17,10 @@ map <Leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
 map <Leader>s :split <C-R>=expand("%:p:h") . '/'<CR>
 map <Leader>v :vnew <C-R>=expand("%:p:h") . '/'<CR>
 
+nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
+nnoremap <Leader>sp :call RunNearestSpec()<CR>
+nnoremap <Leader>l :call RunLastSpec()<CR>
+
 map <Leader>n :nohl<cr>
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
@@ -88,7 +92,6 @@ set complete=.,w,t
 
 let g:rspec_runner = "os_x_iterm"
 let g:rspec_command = "Dispatch bundle exec rspec --format progress {spec}"
-map <Leader>a :call RunAllSpecs()<CR>
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
