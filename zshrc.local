@@ -2,7 +2,7 @@ typeset -U path
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.7.0_72.jdk/Contents/Home"
 export M2_HOME="/usr/local/Cellar/maven/3.2.3/libexec"
 export JETTY_HOME="/Users/michaelcowgill/servers/jetty"
-export JRUBY_OPTS="-J-XX:+TieredCompilation -J-XX:TieredStopAtLevel=1"
+export JRUBY_OPTS="-J-XX:+TieredCompilation -J-XX:TieredStopAtLevel=1 -J-noverify -Xcompile.mode=OFF"
 
 export -U PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 export -U PATH="$PATH:/usr/local/lib/node_modules"
@@ -40,5 +40,7 @@ done
 for script in ~/.zsh/lib/*.zsh; do
   source $script
 done
+
+eval `boot2docker shellinit 2>/dev/null`
 
 if which rbenv > /dev/null; then eval "$(rbenv init - zsh --no-rehash)"; fi
