@@ -9,8 +9,6 @@ let g:netrw_liststyle=3        " Explorer style
 set encoding=utf-8
 set scrolloff=6
 
-let g:syntastic_check_on_open=0
-"
 " Edit another file in the same directory as the current file
 " uses expression to extract path from current file's path
 map <Leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
@@ -74,6 +72,7 @@ nnoremap \ :Ag<SPACE>
 
 " hint to keep lines short
 if exists('+colorcolumn')
+  hi ColorColumn guibg=#2d2d2d ctermbg=246
   set colorcolumn=100
 endif
 

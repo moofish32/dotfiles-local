@@ -1,4 +1,5 @@
 Plugin 'tpope/vim-dispatch'
+Plugin 'tpope/vim-rake'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'christoomey/vim-tmux-navigator'

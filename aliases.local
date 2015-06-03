@@ -164,6 +164,15 @@ alias z="zeus"
 alias ods-lock='gsfe --recursive mvn versions:set; gsfe --recursive mvn versions:resolve-ranges versions:update-properties'
 alias ods-revert='gsfe --recursive mvn versions:revert'
 
+#docker
+alias dc='docker-compose'
+alias dcr='docker-compose run'
+alias dcrw='docker-compose run web'
+alias dcs='docker-compose start'
+alias dcs!='docker-compose stop'
+alias dcdbds='docker-compose run web rake db:setup'
+alias dcdbts='docker-compose run -e RACK_ENV=test web rake db:setup'
+
 # Process management
 alias pj='ps aux | grep java'
 function sstart() {
