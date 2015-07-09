@@ -14,7 +14,30 @@ set -g message-attr bold
 set -g status-left '#[fg=colour235,bg=colour252,bold]  #S #[fg=colour252,bg=colour238,nobold]#[fg=colour245,bg=colour238,bold] #(whoami) #[fg=colour238,bg=colour234,nobold]'
 set -g window-status-format "#[fg=white,bg=colour234] #I #W "
 set -g window-status-current-format "#[fg=colour234,bg=colour39]#[fg=colour25,bg=colour39,noreverse,bold] #I #W #[fg=colour39,bg=colour234,nobold]"
-set -g mode-mouse on
+setw -g mode-mouse on
+set -g mouse-resize-pane on 
+set -g mouse-select-pane on 
+set -g mouse-select-window on 
+
+# Toggle mouse on with ^B m
+bind m \
+       set -g mode-mouse on \;\
+       set -g mouse-resize-pane on \;\
+       set -g mouse-select-pane on \;\
+       set -g mouse-select-window on \;\
+       display 'Mouse: ON'
+
+# Toggle mouse off with ^B M
+       bind M \
+         set -g mode-mouse off \;\
+         set -g mouse-resize-pane off \;\
+         set -g mouse-select-pane off \;\
+         set -g mouse-select-window off \;\
+         display 'Mouse: OFF'
+
+
+# add copy mode binding
+bind C-[ copy-mode
 
 # Smart pane switching with awareness of vim splits
 is_vim='echo "#{pane_current_command}" | grep -iqE "(^|\/)g?(view|n?vim?)(diff)?$"'

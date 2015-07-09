@@ -39,7 +39,7 @@ nmap <Leader>a: :Tabularize /:\zs/l0l1<CR>
 vmap <Leader>a: :Tabularize /:\zs/l0l1<CR>
 nmap <Leader>a, :Tabularize /,\zs/l0l1<CR>
 vmap <Leader>a, :Tabularize /,\zs/l0l1<CR>
-filetype plugin indent on
+" filetype plugin indent on
 
 " Tagbar
 nmap <Leader>tb :TagbarToggle<CR>
@@ -113,6 +113,16 @@ nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 nnoremap <silent> <c-g> :TmuxNavigatePrevious<cr>
 
+let g:syntastic_mode_map = {'mode': 'passive', 
+  \ 'active_filetypes': ['coffee'],
+  \ 'passive_filetypes': []}
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_wq = 0
 " Toggle Case
 function! TwiddleCase(str)
   if a:str ==# toupper(a:str)

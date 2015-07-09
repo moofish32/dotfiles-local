@@ -5,7 +5,7 @@ export JETTY_HOME="/Users/michaelcowgill/servers/jetty"
 export JETTY_BASE="/var/lib/jetty"
 export JETTY_RUN="/run/jetty"
 export JETTY_STATE="$JETTY_RUN/jetty.state"
-export JRUBY_OPTS="-J-XX:+TieredCompilation -J-XX:TieredStopAtLevel=1 -J-noverify -Xcompile.mode=OFF"
+export JRUBY_OPTS="-J-XX:+TieredCompilation -J-XX:TieredStopAtLevel=1 -J-noverify"
 export DOCKER_IP=`boot2docker ip`
 
 export -U PATH="/usr/local/bin:/usr/local/sbin:$PATH"
