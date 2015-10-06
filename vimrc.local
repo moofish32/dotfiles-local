@@ -81,6 +81,7 @@ set numberwidth=5
 
 map <Leader>ct :!ctags -R .<CR>
 
+let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 set wildignore+=*/tmp/*,*/target/*,*.so,*.swp,*.zip,*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*
 " Tab completion
 " will insert tab at beginning of line,
