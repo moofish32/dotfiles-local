@@ -1,4 +1,5 @@
-colorscheme grb256
+colorscheme lucius
+set background=dark
 set guifont=Source\ Code\ Pro\ for\ Powerline:h16
 
 set hlsearch             " do incremental searching
@@ -12,14 +13,9 @@ set scrolloff=6
 " Edit another file in the same directory as the current file
 " uses expression to extract path from current file's path
 map <Leader>e :e <C-R>=expand("%:p:h") . '/'<CR>
-map <Leader>s :split <C-R>=expand("%:p:h") . '/'<CR>
 map <Leader>v :vnew <C-R>=expand("%:p:h") . '/'<CR>
 
-nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
-nnoremap <Leader>y :call RunNearestSpec()<CR>
-nnoremap <Leader>l :call RunLastSpec()<CR>
-nnoremap <Leader>A :call RunAllSpecs()<CR>
-
+" Clear highlighting
 map <Leader>n :nohl<cr>
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
@@ -61,8 +57,11 @@ vmap <F2> :w !pbcopy<CR><CR>
 set clipboard=unnamed " default yank and paste to the osx clipboard
 
 " Remove trailing whitespace on save for ruby files.
-au BufWritePre *.rb :%s/\s\+$//e
-au BufWritePre *.coffee :%s/\s\+$//e
+augroup kill_trailing_whitspace
+  autocmd!
+  au BufWritePre *.rb :%s/\s\+$//e
+  au BufWritePre *.coffee :%s/\s\+$//e
+augroup END
 
 " bind K to grep word under cursor
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
@@ -83,7 +82,6 @@ set numberwidth=5
 map <Leader>ct :!ctags -R .<CR>
 
 set wildignore+=*/tmp/*,*/target/*,*.so,*.swp,*.zip,*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*
-
 " Tab completion
 " will insert tab at beginning of line,
 " will use completion if not at beginning
@@ -91,7 +89,22 @@ set wildmode=list:longest,list:full
 set complete=.,w,t
 
 let g:rspec_runner = "os_x_iterm"
-let g:rspec_command = "Dispatch bundle exec rspec --format progress {spec}"
+let g:rspec_command = "Dispatch bundle exec rspec {spec}"
+augroup test_by_filetype
+  autocmd!
+  autocmd FileType ruby nnoremap <Leader>A :call RunAllSpecs()<CR>
+  autocmd FileType ruby nnoremap <Leader>y :call RunNearestSpec()<CR>
+  autocmd FileType ruby nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
+  autocmd FileType ruby nnoremap <Leader>l :call RunLastSpec()<CR>
+
+  autocmd FileType elixir nnoremap <Leader>A :call RunAllTests()<CR>
+  autocmd FileType elixir nnoremap <Leader>y :call RunNearestTest()<CR>
+  autocmd FileType elixir nnoremap <Leader>t :call RunCurrentTestFile()<CR>
+  autocmd FileType elixir nnoremap <Leader>l :call RunLastTest()<CR>
+augroup END
+
+let g:ex_test_runner = "os_x_iterm"
+let g:ex_test_command = "Dispatch mix test {test}"
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
@@ -119,6 +132,8 @@ let g:syntastic_mode_map = {'mode': 'passive',
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+
+let g:ctrlp_show_hidden = 1
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1

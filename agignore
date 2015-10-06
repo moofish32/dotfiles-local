@@ -1,0 +1,14 @@
+tmp/*
+target/*
+*.so
+*.swp
+*.zip
+*.o
+*.obj
+*.git
+*.rbc
+*.class
+.svn
+vendor/gems/*
+public/assets/*
+*.log
