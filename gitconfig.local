@@ -1,6 +1,8 @@
 [user]
 	name = Mike Cowgill
 	email = moofish32@gmail.com
+[push]
+	followTags = true
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 

@@ -3,6 +3,9 @@ set -g status-right "#[fg=colour155]#(pmset -g batt | ~/.bin/battinfo.rb) | #[fg
 set -g status-left-length 32
 set -g status-right-length 150
 
+bind-key -t vi-copy 'v' begin-selection
+bind-key -t vi-copy 'y' copy-selection
+
 set -g status-fg white
 set -g status-bg colour234
 set -g window-status-activity-attr bold

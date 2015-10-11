@@ -56,6 +56,8 @@ nmap <F2> :.w !pbcopy<CR><CR>
 vmap <F2> :w !pbcopy<CR><CR>
 set clipboard=unnamed " default yank and paste to the osx clipboard
 
+let g:syntastic_check_on_open=1
+
 " Remove trailing whitespace on save for ruby files.
 augroup kill_trailing_whitspace
   autocmd!

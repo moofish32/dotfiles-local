@@ -48,4 +48,7 @@ done
 
 eval `boot2docker shellinit 2>/dev/null`
 
+# added by travis gem
+[ -f /Users/michaelcowgill/.travis/travis.sh ] && source /Users/michaelcowgill/.travis/travis.sh
+
 if which rbenv > /dev/null; then eval "$(rbenv init - zsh --no-rehash)"; fi
