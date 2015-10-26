@@ -1,17 +1,12 @@
 typeset -U path
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.7.0_72.jdk/Contents/Home"
-export M2_HOME="/usr/local/Cellar/maven/3.3.1/libexec"
-export JETTY_HOME="/Users/michaelcowgill/servers/jetty"
-export JETTY_BASE="/var/lib/jetty"
-export JETTY_RUN="/run/jetty"
-export JETTY_STATE="$JETTY_RUN/jetty.state"
 export JRUBY_OPTS="-J-XX:+TieredCompilation -J-XX:TieredStopAtLevel=1 -J-noverify"
-export DOCKER_IP=`boot2docker ip`
 
 export -U PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 export -U PATH="$PATH:/usr/local/lib/node_modules"
 export -U PATH=/usr/local/bin:/usr/local/sbin:$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/Postgres93.app/Contents/MacOS/bin
 source $(brew --prefix nvm)/nvm.sh
+export NVM_DIR=~/.nvm
+
 export DOCKER_CLIENT_TIMEOUT=80
 export -U PATH="$HOME/.rbenv/bin:$PATH"
 # use vim as the visual editor
