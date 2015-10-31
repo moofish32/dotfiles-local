@@ -22,16 +22,24 @@ set -g message-attr bold
 set -g status-left '#[fg=colour235,bg=colour252,bold]  #S #[fg=colour252,bg=colour238,nobold]#[fg=colour245,bg=colour238,bold] #(whoami) #[fg=colour238,bg=colour234,nobold]'
 set -g window-status-format "#[fg=white,bg=colour234] #I #W "
 set -g window-status-current-format "#[fg=colour234,bg=colour39]#[fg=colour25,bg=colour39,noreverse,bold] #I #W #[fg=colour39,bg=colour234,nobold]"
-set -g mouse on
 
+set-option -g mouse on
+bind-key -T root WheelUpPane if-shell -F -t = "#{alternate_on}" "send-keys -M" "select-pane -t =; copy-mode -e; send-keys -M"
+bind-key -T root WheelDownPane if-shell -F -t = "#{alternate_on}" "send-keys -M" "select-pane -t =; send-keys -M"
+bind-key -t vi-copy WheelUpPane halfpage-up
+bind-key -t vi-copy WheelDownPane halfpage-down
+set-window-option -g mode-keys vi
+
+# reload tmux conf
+bind r source-file ~/.tmux.conf \; display "Reloaded tmux.conf!"
 # Toggle mouse on with ^B m
 bind m \
-       set -g mouse on \;\
+       set-option -g mouse on \;\
        display 'Mouse: ON'
 
 # Toggle mouse off with ^B M
        bind M \
-         set -g mouse off \;\
+         set-option -g mouse off \;\
          display 'Mouse: OFF'
 
 
