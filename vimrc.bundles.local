@@ -1,6 +1,6 @@
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-rake'
-Plug 'elixir-lang/vim-elixir'
+Plug 'elixir-lang/vim-elixir', { 'dir': '~/code/vim-elixir'}
 Plug 'flazz/vim-colorschemes'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'godlygeek/tabular'

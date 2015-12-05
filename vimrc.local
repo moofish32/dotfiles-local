@@ -1,4 +1,4 @@
-colorscheme lucius
+colorscheme zenburn
 set background=dark
 set guifont=Source\ Code\ Pro\ for\ Powerline:h16
 
@@ -50,11 +50,8 @@ let g:tagbar_type_coffee = {
     \ ]
     \ }
 
-" clipboard goodies
-map <Leader>p :set paste<CR>o<esc>:r !pbpaste<CR>:set nopaste<cr>
-nmap <F2> :.w !pbcopy<CR><CR>
 vmap <F2> :w !pbcopy<CR><CR>
-set clipboard=unnamed " default yank and paste to the osx clipboard
+set clipboard=unnamedplus " default yank and paste to the osx clipboard
 
 let g:syntastic_check_on_open=1
 
