@@ -1,6 +1,6 @@
 [user]
 	name = Mike Cowgill
-	email = moofish32@gmail.com
+	email = michael_cowgill@intuit.com
 [push]
 	followTags = true
 [difftool "sourcetree"]
