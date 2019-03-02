@@ -1,7 +1,5 @@
 typeset -U path
 export JRUBY_OPTS="-J-XX:+TieredCompilation -J-XX:TieredStopAtLevel=1 -J-noverify"
-
-
 export -U PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 export -U PATH="$PATH:/usr/local/lib/node_modules"
 export -U PATH=/usr/local/bin:/usr/local/sbin:$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/Postgres93.app/Contents/MacOS/bin
@@ -46,7 +44,7 @@ bindkey "^[[1;5D" backward-word
 
 bindkey '^[[Z' reverse-menu-complete
 
-autoload -Uz compinit && compinit
+# autoload -Uz compinit && compinit
 
 #append history between panes
 setopt HIST_EXPIRE_DUPS_FIRST
@@ -75,11 +73,12 @@ export DEFAULT_USER=mcowgill1
 [ -f /Users/michaelcowgill/.travis/travis.sh ] && source /Users/michaelcowgill/.travis/travis.sh
 
 if which rbenv > /dev/null; then eval "$(rbenv init - zsh --no-rehash)"; fi
+
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 export NVM_DIR="$HOME/.nvm"
 . "/usr/local/opt/nvm/nvm.sh"
-
 # setting up python after pyenv
 export PYTHON_USER_BASE_PATH=$(python -m site --user-base)
 export -U PATH=$PATH:$PYTHON_USER_BASE_PATH/bin

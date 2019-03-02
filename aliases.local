@@ -121,6 +121,8 @@ alias wifi='networksetup -setairportpower en0'
 alias checkvpn='route get 0/1 && route get 128.0/1'
 
 # git
+alias gaa='git add --all .'
+alias gcm='git commit -m'
 alias gcs='git commit -S -m'
 alias gpr='git pull --rebase'
 alias gcot='git checkout -t'
@@ -143,9 +145,6 @@ alias gsui='git submodule update --init'
 alias gib='git init --bare'
 alias glm='ls -al `git status | grep modified | cut -d":" -f2`'
 alias glfs='pretty_git_file_size'
-# ionic
-alias iri='ionic run ios -l -c -s'
-alias iei='ionic run ios -l -c -s'
 
 # aws cdk - lerna shortcuts
 alias lr='lerna run --stream --scope $(node -p "require(\"./package.json\").name")'
