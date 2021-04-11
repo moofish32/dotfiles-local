@@ -60,16 +60,11 @@ alias d='cd ~/.dotfiles'
 # File Shortcuts
 alias aliases='vim ~/dotfiles-local/aliases.local'
 alias codereview='vim ~/dropbox_personal/Notes/code-review-checklist.txt'
-alias ideas='vim ~/dropbox_personal/Notes/ideas.txt'
-alias tsl='vim ~/dropbox_personal/Notes/tool_sharpening_list.md'
 
 # brew shortcuts
 alias bci='brew cask install'
 alias bcs='brew cask search'
 alias bcu='brew cask uninstall'
-
-# installation shortcuts
-alias relaptop='bash <(curl -s https://raw.githubusercontent.com/bkonowitz/laptop/master/mac) |& tee ~/laptop.log'
 
 # Maven shortctus
 alias mc='mvn compile'
@@ -122,16 +117,23 @@ alias checkvpn='route get 0/1 && route get 128.0/1'
 
 # git
 alias gaa='git add --all .'
-alias gcm='git commit -m'
+alias ga='git add'
+alias gcm='git commit -S -m'
 alias gd='git diff'
 alias gco='git checkout'
+alias gcl='git clone'
+alias gcob='git checkout -b'
 alias gcfn='git clean -fxdn'
 alias gcf='git clean -fxd'
 alias gcs='git commit -S -m'
 alias gp='git pull'
 alias gpr='git pull --rebase'
+alias grbi='git rebase -i'
+alias grbc='git rebase --continue'
+alias gp!='git push'
+alias glgs='pretty_git_log -5'
 alias gcot='git checkout -t'
-alias gw='git add --all . && git commit -m 'WIP' && git push'
+alias gw="git add --all . && git commit -m 'WIP' && git push"
 alias gwip="git add --all . && git commit -m 'WIP'"
 alias patch='git format-patch HEAD^ --stdout > patch.diff'
 alias sync='git add -u . && git commit -m "Minor changes. Commit message skipped." && repush'
@@ -144,12 +146,16 @@ alias gs='git stash'
 alias gscfn='gsfe git clean -fxdn'
 alias gscf='gsfe git clean -fxd'
 alias gdt='git difftool'
+alias gm='git checkout master'
+alias gm!='git merge'
 alias gmt='git mergetool'
 alias grbs='git rebase --skip'
 alias gsui='git submodule update --init'
 alias gib='git init --bare'
 alias glm='ls -al `git status | grep modified | cut -d":" -f2`'
 alias glfs='pretty_git_file_size'
+alias hpr='hub pull-request'
+alias hpc='hub pr checkout'
 
 # aws cdk - lerna shortcuts
 alias lr='lerna run --stream --scope $(node -p "require(\"./package.json\").name")'

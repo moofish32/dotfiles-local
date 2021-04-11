@@ -1,9 +1,9 @@
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'leafgarland/typescript-vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'flazz/vim-colorschemes'
-Plug 'w0rp/ale'
 Plug 'itchyny/lightline.vim'
 Plug 'elixir-lang/vim-elixir'
 Plug 'hashivim/vim-terraform'
-
+Plug 'jparise/vim-graphql'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
