@@ -27,8 +27,6 @@ export POWERLINE_CONFIG_PATHS=$HOME/.config/powerline/config_files
 #AWS
 export AWS_DEFAULT_REGION=us-west-2
 
-export HOMEBREW_GITHUB_API_TOKEN=2031bf69dc00da7eb9bfd71fe39b2064b51779d6
-
 export DOCKER_CLIENT_TIMEOUT=80
 
 # use vim as the visual editor
