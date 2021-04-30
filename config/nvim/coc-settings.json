@@ -1,0 +1,48 @@
+{
+  "languageserver": {
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": [
+        "go.mod",
+        ".git"
+      ],
+      "disableWorkspaceFolders": true,
+      "filetypes": [
+        "go"
+      ],
+      "initializationOptions": {
+        "completeUnimported": true
+      }
+    },
+    "dockerfile": {
+      "command": "docker-langserver",
+      "filetypes": [
+        "dockerfile"
+      ],
+      "args": [
+        "--stdio"
+      ]
+    }
+  },
+  "java.configuration.runtimes": [
+    {
+      "name": "JavaSE-14",
+      "path": "/usr/local/opt/openjdk",
+      "default": true
+    }
+  ],
+  "python.jediEnabled": false,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "css",
+    "go",
+    "html",
+    "javascript",
+    "typescript",
+    "javascript.jsx",
+    "typescript.tsx",
+    "typescriptreact"
+  ],
+  "tsserver.formatOnType": true,
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+  "suggest.noselect": false
+}

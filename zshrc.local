@@ -1,28 +1,13 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 typeset -U path
 export -U PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 export -U PATH="$PATH:/usr/local/lib/node_modules"
 export GOPATH="$HOME/code"
 export -U PATH=$PATH:$GOPATH/bin
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Contents/Home/"
-export -U PATH=$PATH:$HOME/.cdk/bin
-export -U PATH=$PATH:/usr/local/opt/openssl@1.1/bin
-export -U GPG_TTY=$(tty)
+export -U PATH="$PATH:$HOME/.cargo/bin"
 
-#openssl
-export LDFLAGS="-L/usr/local/opt/openssl@1.1/lib"
-export CPPFLAGS="-I/usr/local/opt/openssl@1.1/include"
-
-#powerline
-export POWERLINE_CONFIG_PATHS=$HOME/.config/powerline/config_files
+# gpgp without gpg suite
+export GPG_TTY=$(tty)
 
 #AWS
 export AWS_DEFAULT_REGION=us-west-2
@@ -56,22 +41,7 @@ bindkey '^[[Z' reverse-menu-complete
 
 # autoload -Uz compinit && compinit
 
-#append history between panes
-setopt HIST_EXPIRE_DUPS_FIRST
-setopt HIST_IGNORE_ALL_DUPS
-setopt HIST_SAVE_NO_DUPS
-setopt SHARE_HISTORY
-export HISTSIZE=100000                   # big big history
-export SAVEHIST=100000
-export HISTFILE=$HOME/.zhistory
-# Save and reload the history after each command finishes
-export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
-
-source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme
 export DEFAULT_USER=mcowgill1
-
-# added by travis gem
-[ -f /Users/michaelcowgill/.travis/travis.sh ] && source /Users/michaelcowgill/.travis/travis.sh
 
 # Try loading ASDF from the regular home dir location
 if [ -f "$HOME/.asdf/asdf.sh" ]; then
@@ -81,3 +51,6 @@ elif which brew >/dev/null &&
   [ -f "$BREW_DIR/opt/asdf/asdf.sh" ]; then
   . "$BREW_DIR/opt/asdf/asdf.sh"
 fi
+
+# ASDF Java support
+source ~/.asdf/plugins/java/set-java-home.zsh

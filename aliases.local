@@ -21,28 +21,10 @@ alias vi='vim'
 alias get='sudo apt-get install'
 alias remore='!! | more'
 alias retag='ctags -Ra'
-# alias retag='ctags -R --exclude=.svn --exclude=.git --exclude=log --exclude=tmp --exclude=target --exclude=vendor *'
-alias rubytags='ctags -R --languages=ruby --exclude=.git --exclude=log --exclude=tmp --exclude=target . $(bundle list --paths)'
 alias sz='source ~/.zshrc'
 alias pj='ps aux | grep java'
 alias pkj='pkill java'
-alias pkr='pkill rails'
-alias pkjr='pkill jruby'
 alias watch='watch -n 1 '
-
-alias o_learning='open $(aws_url 990290574177)'
-alias o_efe='open $(aws_url 838249524224)'
-alias o_efe_e='open $(aws_url 177824048416)'
-alias o_acd='open $(aws_url 124755957763)'
-alias o_pcccp='open $(aws_url 244268218855)'
-alias o_acp='open $(aws_url 427900722408)'
-alias o_pie='open $(aws_url 617251177996)'
-alias o_ctr='open $(aws_url 718090513029)'
-alias o_fcs_dev='open $(aws_url 436276480602)'
-alias o_fps_dev='open $(aws_url 150926315915)'
-alias o_cache='open $(aws_url 109768914891)'
-alias o_cc='open $(aws_url 379554480948)'
-alias o_rango='open $(aws_url 519197270331)'
 
 # kubectl
 alias kt='kubectl'
@@ -55,16 +37,9 @@ alias ktkp='ktk get pod'
 
 # Path Shortcuts
 alias code='cd ~/code'
-alias d='cd ~/.dotfiles'
 
 # File Shortcuts
-alias aliases='vim ~/dotfiles-local/aliases.local'
-alias codereview='vim ~/dropbox_personal/Notes/code-review-checklist.txt'
-
-# brew shortcuts
-alias bci='brew cask install'
-alias bcs='brew cask search'
-alias bcu='brew cask uninstall'
+alias aliases='vim ~/moofish32/dotfiles-local/aliases.local'
 
 # Maven shortctus
 alias mc='mvn compile'
@@ -79,28 +54,6 @@ alias mcint='mvn clean install -DskipUnitTests=true -DskipItTests=true -Dmaven.t
 alias mt='mvn test'
 alias mtt='mt | tee test_output.log'
 alias mvt='mvn verify | tee test_output.log'
-
-# Node
-alias ni='npm install'
-alias nis='npm install --save'
-alias nisd='npm install --save-dev'
-
-# Ruby
-alias fs='foreman start'
-alias irb='irb --readline -r irb/completion'
-alias killruby='killall -9 ruby'
-alias mdbd='bundle exec rake db:migrate'
-alias mdbt='RAILS_ENV=test bundle exec rake db:migrate'
-alias mdbdr='bundle exec rake db:rollback'
-alias mdbtr='RAILS_ENV=test bundle exec rake db:rollback'
-alias berp='bundle exec rake parallel:spec'
-alias berpp='bundle exec rake parallel:prepare && bundle exec rake parallel:spec'
-
-# Services
-alias restart_postgres="stoppostgres && startpostgres"
-alias startpostgres='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
-alias startredis='redis-server /usr/local/etc/redis.conf &'
-alias stoppostgres='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log stop'
 
 # tmux
 alias ta='tmux attach -t'
@@ -131,7 +84,7 @@ alias gpr='git pull --rebase'
 alias grbi='git rebase -i'
 alias grbc='git rebase --continue'
 alias gp!='git push'
-alias glgs='pretty_git_log -5'
+alias glgs="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
 alias gcot='git checkout -t'
 alias gw="git add --all . && git commit -m 'WIP' && git push"
 alias gwip="git add --all . && git commit -m 'WIP'"
@@ -154,40 +107,8 @@ alias gsui='git submodule update --init'
 alias gib='git init --bare'
 alias glm='ls -al `git status | grep modified | cut -d":" -f2`'
 alias glfs='pretty_git_file_size'
-alias hpr='hub pull-request'
-alias hpc='hub pr checkout'
-
-# aws cdk - lerna shortcuts
-alias lr='lerna run --stream --scope $(node -p "require(\"./package.json\").name")'
-alias lw='lr watch &'
-alias lt='lr test'
-
-# Bundler
-alias b="bundle"
-alias bake='bundle exec rake'
-alias be='bundle exec'
-alias bi='bundle install'
-alias bu='bundle update'
-alias rebi='bundle install && !!'
-
-# Tests and Specs
-alias t="bundle exec rspec"
-alias cuc="bundle exec cucumber"
-alias ber="bundle exec rspec"
-
-# Chef
-alias ce="chef exec"
-alias cek="ce kitchen"
-
-# Rails
-alias migrate="rake db:migrate db:rollback && rake db:migrate db:test:prepare"
-alias m="migrate"
-alias rc='rails console'
-alias remigrate='rake db:migrate && rake db:migrate:redo && rake db:schema:dump && rake db:test:prepare'
-alias rk="rake"
-alias rs='bundle install && rails server -p 3000'
-alias s="rspec"
-
+alias hpr='gh pr create -f'
+alias hpc='gh pr checkout'
 
 #docker
 alias dc='docker-compose'
@@ -195,34 +116,7 @@ alias dcr='docker-compose run'
 alias dcs='docker-compose start'
 alias dcs!='docker-compose stop'
 
-#account creation
-alias ac_ssh='ssh -i ~/.ssh/id_rsa mcowgill@$AC_APP -o "proxycommand ssh -W %h:%p -i ~/.ssh/he-user.priv he-user@$BH"'
-
-#aws
-function ec2-subnets() {
-  aws ec2 describe-subnets \
-    --filters "Name=tag:Type,Values=App" | jq -r '[.Subnets[].SubnetId] | join(",")'
-}
-
-
-# Process management
-alias pj='ps aux | grep java'
-function sstart() {
-  cat /dev/null > $1.pid
-    nohup $1 &
-    echo $! >> $1.pid
-}
-
-function kpid() {
-  pid=$(cat $1.pid)
-    echo "** Killing pid " + $pid
-    kill -9 $pid
-    sleep 2
-    ps ax | grep $1
-}
-
-function wpid() {
-  echo $! > $1.pid
-}
-
-function es() { subl "${1:-.}"; }
+#intuit
+alias awsc='eiamCli aws_creds -c -n '
+alias eln='eiamCli login'
+alias oc='~/.oaws '
