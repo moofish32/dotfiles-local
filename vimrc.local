@@ -40,6 +40,8 @@ endif
 
 " diable vim-go features for coc 
 let g:go_code_completion_enabled = 0
+let g:go_def_mapping_enabled = 0
+let g:go_metalinter_enabled = []
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
@@ -165,14 +167,9 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 " use `:OR` for organize import of current buffer
 command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
-autocmd BufWritePre *.go :OR
+autocmd BufWritePre *.go :silent! OR
 " quick silver searcher
 nnoremap \ :Ag<SPACE>
-
-" Add go tag mappings
-autocmd FileType go nmap gtj :CocCommand go.tags.add json<cr>
-autocmd FileType go nmap gty :CocCommand go.tags.add yaml<cr>
-autocmd FileType go nmap gtx :CocCommand go.tags.clear<cr>
 
 " hint to keep lines short
 if exists('+colorcolumn')

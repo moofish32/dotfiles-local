@@ -5,5 +5,5 @@ Plug 'itchyny/lightline.vim'
 Plug 'elixir-lang/vim-elixir'
 Plug 'hashivim/vim-terraform'
 Plug 'jparise/vim-graphql'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'buoto/gotests-vim'

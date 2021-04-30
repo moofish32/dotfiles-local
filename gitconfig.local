@@ -11,9 +11,6 @@
 [credential "https://github.intuit.com"]
 	helper = osxkeychain
 	username = mcowgill1
-[credential "https://git-codecommit.us-west-2.amazonaws.com"]
-	helper = !aws --profile default codecommit credential-helper $@
-	UseHttpPath = true
 [credential "https://github.com"]
 	helper = osxkeychain
 	username = moofish32
