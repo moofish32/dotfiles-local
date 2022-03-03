@@ -1,17 +1,40 @@
 {
+  "diagnostic.checkCurrentLine": true,
+  "diagnostic.messageTarget": "echo",
   "languageserver": {
+    "graphql": {
+      "command": "graphql-lsp",
+      "args": ["server", "-m", "stream"],
+      "filetypes": ["graphql", "graphqls"]
+    },
+    "ccls": {
+            "command": "ccls",
+            "filetypes": [
+                "c",
+                "cpp",
+                "objc",
+                "objcpp"
+            ],
+            "rootPatterns": [
+                ".ccls",
+                "compile_commands.json",
+                ".vim/",
+                ".git/",
+                ".hg/"
+            ],
+            "initializationOptions": {
+                "cache": {
+                    "directory": "/tmp/ccls"
+                }
+            }
+        },
     "golang": {
       "command": "gopls",
-      "rootPatterns": [
-        "go.mod",
-        ".git"
-      ],
-      "disableWorkspaceFolders": true,
-      "filetypes": [
-        "go"
-      ],
+      "rootPatterns": [ "go.mod", ".git/", ".vim/" ],
+      "filetypes": ["go"],
       "initializationOptions": {
-        "completeUnimported": true
+        "completeUnimported": true,
+        "usePlaceholders": true
       }
     },
     "dockerfile": {
@@ -24,14 +47,8 @@
       ]
     }
   },
-  "java.configuration.runtimes": [
-    {
-      "name": "JavaSE-14",
-      "path": "/usr/local/opt/openjdk",
-      "default": true
-    }
-  ],
-  "python.jediEnabled": false,
+  "java.jdt.ls.vmargs": "-javaagent:/usr/local/opt/lombok.jar",
+  "java.format.settings.url": "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml",
   "coc.preferences.formatOnSaveFiletypes": [
     "css",
     "go",

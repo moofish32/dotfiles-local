@@ -39,13 +39,13 @@ bindkey "^[[1;5D" backward-word
 
 bindkey '^[[Z' reverse-menu-complete
 
-# autoload -Uz compinit && compinit
-
 export DEFAULT_USER=mcowgill1
 
 # Try loading ASDF from the regular home dir location
-if [ -f "$HOME/.asdf/asdf.sh" ]; then
-  . "$HOME/.asdf/asdf.sh"
+# 
+
+if [ -f "$(brew --prefix asdf)/libexec/asdf.sh" ]; then
+  . "$(brew --prefix asdf)/libexec/asdf.sh"
 elif which brew >/dev/null &&
   BREW_DIR="$(dirname `which brew`)/.." &&
   [ -f "$BREW_DIR/opt/asdf/asdf.sh" ]; then
@@ -53,4 +53,4 @@ elif which brew >/dev/null &&
 fi
 
 # ASDF Java support
-source ~/.asdf/plugins/java/set-java-home.zsh
+# source ~/.asdf/plugins/java/set-java-home.zsh
