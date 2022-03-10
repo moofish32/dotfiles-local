@@ -7,3 +7,4 @@ Plug 'hashivim/vim-terraform'
 Plug 'jparise/vim-graphql'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'buoto/gotests-vim'
+Plug 'jparise/vim-graphql'

@@ -11,6 +11,9 @@ for function in ~/.zsh/functions/*; do
   source $function
 done
 
+# githelpers
+[[ -f ~/.zsh/configs/githelpers ]] && source ~/.zsh/configs/githelpers
+
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
 

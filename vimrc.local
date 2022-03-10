@@ -11,6 +11,20 @@ set encoding=utf-8
 set scrolloff=6
 set mouse=a
 
+" disable ale 
+let g:ale_pattern_options = {'\.min.js$': {'ale_enabled': 0}, '.java$': {'ale_enabled': 0}, '.go$': {'ale_enabled': 0}, '.ts$': {'ale_enabled': 0}}
+" disable ALE LSP in favor of coc
+let g:ale_disable_lsp = 1
+let g:ale_linters = {
+  \ 'go': ['gopls'],
+  \}
+
+autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
+command! -nargs=0 OR :silent call CocAction('runCommand', 'editor.action.organizeImport')
+
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
+
 " coc nvim default begin
 " TextEdit might fail if hidden is not set.
 set hidden
@@ -39,9 +53,9 @@ else
 endif
 
 " diable vim-go features for coc 
-let g:go_code_completion_enabled = 0
-let g:go_def_mapping_enabled = 0
-let g:go_metalinter_enabled = []
+" let g:go_code_completion_enabled = 0
+" let g:go_def_mapping_enabled = 0
+" let g:go_metalinter_enabled = []
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
@@ -166,10 +180,12 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 "coc nvim default end
 
 " use `:OR` for organize import of current buffer
-command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
-autocmd BufWritePre *.go :silent! OR
+autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
+
 " quick silver searcher
 nnoremap \ :Ag<SPACE>
+
+autocmd FileType python let b:coc_root_patterns = ['.git', '.env', 'venv', '.venv', 'setup.cfg', 'setup.py', 'pyproject.toml', 'pyrightconfig.json']
 
 " hint to keep lines short
 if exists('+colorcolumn')
